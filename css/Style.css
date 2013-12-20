@@ -1,0 +1,334 @@
+﻿*
+{
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+
+/*Styler links som ligger i "lister i lister"*/
+ul > li > ul > li > a
+{
+    text-decoration: none;
+    font-size: 12px;
+}
+
+
+
+
+a:hover
+{
+    text-decoration: underline;
+}
+
+body
+{
+    /*background-color: slategrey;*/
+}
+
+#Wrapper
+{
+    width: 960px;
+    margin: auto;
+    background-color: aqua;
+}
+
+#logo
+{
+    float: left;
+    width: 159px;
+    height: 130px;
+    background-color: rgb(215,217,214);
+    border-right: 1px solid black;
+}
+
+/*------------------------Menu----------------------------*/
+
+#topmenu
+{
+}
+
+    #topmenu li
+    {
+        list-style: none;
+    }
+
+    #topmenu > ul > li
+    {
+        height: 30px;
+        padding-top: 100px;
+        display: block;
+        width: 159px;
+        border-right: 1px solid black;
+        float: left;
+        background-color: rgb(215,217,214);
+        text-align: center;
+        font-size: 16px;
+    }
+
+
+        #topmenu > ul > li:hover
+        {
+            background-color: #595958;
+            color: white;
+        }
+
+        #topmenu > ul > li > ul
+        {
+            height: 35px;
+            display: none;
+            position: relative;
+            top: 11px;
+            background-color: #595958;
+            width: 800px;
+        }
+
+
+        #topmenu > ul > li:hover > ul
+        {
+            display: inline-block;
+        }
+
+    #topmenu ul > li > ul > li
+    {
+        float: left;
+        padding: 0 5px 0 5px;
+    }
+
+        #topmenu ul > li > ul > li > a
+        {
+            line-height: 35px;
+            color: white;
+        }
+
+    #topmenu > ul > li > ul > li > a:hover
+    {
+        color: lightgrey;
+    }
+
+#menuStilarter:hover ul#submenuStilarter
+{
+    display: inline-block;
+    left: 0px;
+    width: 800px;
+}
+
+#menuOmSkolen:hover ul#submenuOmSkolen
+{
+    display: inline-block;
+    left: -1px;
+    width: 641px;
+}
+
+#menuTurneringer:hover ul#submenuTurneringer
+{
+    display: inline-block;
+    left: -1px;
+    width: 481px;
+}
+
+
+/*-----------------Højremenu med søgefelt og sociale medier links------------*/
+
+
+#topmenuRight
+{
+    width: 320px;
+    height: 130px;
+    float: left;
+    background-color: lightseagreen;
+}
+
+
+#loginBox
+{
+    background-color: white;
+    width: 300px;
+    height: 49px;
+    border-bottom: 1px solid black;
+    padding: 10px 5px 5px 15px;
+    float: left;
+}
+
+
+.SearchBtn
+{
+    float: right;
+    width: 34px;
+    height: 24px;
+    color: white;
+    background-color: #595958;
+    border: none;
+    clear: right;
+}
+
+.SearchBox
+{
+    float: right;
+    width: 110px;
+    height: 24px;
+    background-color: #d7d9d6;
+    border: none;
+    margin-right: 10px;
+    color: white;
+}
+
+    .SearchBox:focus
+    {
+        color: black;
+    }
+
+/*------------------------Contact menu------------------*/
+
+#Contact
+{
+    float: left;
+    width: 160px;
+    height: 64px;
+}
+
+
+        #Contact > div li
+        {
+            list-style-type:none;
+        }
+        
+    #Contact > div > ul > li
+    {
+        float:left;
+        display: block;
+        width: 134px;
+        height: 55px;
+        padding-left:25px;
+        padding-top:10px;
+        border-right: 1px solid black;
+        background-color:white;
+    }
+
+        #Contact > div > ul > li:hover
+        {
+            background-color: #595958;
+            color: white;
+        }
+
+        #Contact > div > ul > li > ul
+        {
+            height: 35px;
+            display: none;
+            position: relative;
+            top: 17px;
+            left:-26px;
+            background-color: #595958;
+        }
+
+
+    #Contact > div > ul > li:hover > ul
+    {
+        width:321px;
+        display: inline-block;
+    }
+    
+    #Contact > div ul > li > ul > li
+    {
+        float: left;
+        padding: 0 5px 0 5px;
+    }
+
+    
+    /*Styler på elementer i panel til opret menuen*/
+    #Contact > div > ul > li > ul > li a
+    {
+        float: left;
+        line-height: 35px;
+        color: white;
+    }
+
+    /*Styler på elementer til opret menuen*/
+    #Contact > div > ul > li > ul > li > a
+    {
+        float: left;
+        line-height: 35px;
+        color: white;
+    }
+    
+    #Contact > div > ul > li > ul > li > a:hover
+    {
+        color: lightgrey;
+    }
+
+    /*--------------------social media links----------------------*/
+
+.SocialMediaLinks
+{
+    display:block;
+    width:80px;
+    height:65px;
+    float:left;
+    opacity:0.4;
+}
+
+.SocialMediaLinks:hover
+{
+    opacity:1;
+}
+
+#TwitterLink
+{
+    background-image:url(../img/rightmenu/twitter.jpg);
+}
+
+#FacebookLink
+{
+    background-image:url(../img/rightmenu/facebook.jpg);
+}
+
+
+/*------------------------Venstre menu-bjælke-----------------------*/
+
+
+#leftmenu
+{
+    float: left;
+    width: 160px;
+    height: 575px;
+    background-color: lightslategrey;
+}
+
+#Tilbage
+{
+    float: left;
+    width: 160px;
+    height: 35px;
+    background-color: white;
+}
+
+.programLink
+{
+    display: block;
+    float: left;
+    width: 160px;
+    height: 180px;
+    opacity:0.6;
+}
+
+.programLink:hover
+{
+    opacity:1.0;
+}
+/*------------------------indhold og artikler----------------------------*/
+
+
+article
+{
+    float: left;
+    height: 575px;
+    width: 800px;
+    /*background-color: antiquewhite;*/
+}
+
+footer
+{
+    float: left;
+    width: 960px;
+    height: 64px;
+    background-color: rgb(215,217,214);
+}

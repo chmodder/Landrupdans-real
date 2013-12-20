@@ -1,0 +1,136 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="landrupdans.Master.cs" Inherits="landrupdans" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+
+    <title></title>
+    <link href="css/Style.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="Wrapper">
+            <div id="logo">
+            </div>
+            <!--logo-->
+
+            <div id="topmenu">
+
+                <ul>
+                    <li id="menuStilarter">Stilarter
+
+                        <ul id="submenuStilarter">
+                            <li><a href="stilarter.aspx">Gå til stilarter</a></li>
+                        </ul>
+
+                    </li>
+
+                    <li id="menuOmSkolen">Om Skolen
+
+                        <ul id="submenuOmSkolen">
+                            <li><a href="undervisningsPrincipper.aspx">Undervisningsprincipper</a></li>
+                            <li><a href="instruktorer.aspx">Instruktører</a></li>
+                            <!--skal stå noget om instruktørerne og hvad de underviser i-->
+                            <li><a href="historie.aspx">Historie</a></li>
+                            <li><a href="priser.aspx">Priser</a></li>
+                            <li><a href="adresse.aspx">Adresse</a></li>
+                        </ul>
+
+                    </li>
+
+                    <li id="menuTurneringer">Turneringer
+
+                        <ul id="submenuTurneringer">
+                            <li><a href="turneringsKalender.aspx">Kalender</a></li>
+                            <li><a href="turneringsVindere.aspx">Turneringsvindere</a></li>
+                        </ul>
+
+                    </li>
+                </ul>
+
+            </div>
+
+            <!--topmenu-->
+
+            <div id="topmenuRight">
+
+                <div id="loginBox">
+
+                    <a href="#">Login</a>
+
+                    <asp:RadioButtonList ID="SearchRadioList" runat="server"></asp:RadioButtonList>
+                    <asp:Button CssClass="SearchBtn" ID="SearchBtn" runat="server" Text="Ok" />
+                    <asp:TextBox CssClass="SearchBox" ID="SearchText" runat="server"></asp:TextBox>
+                </div>
+
+
+
+                <div id="Contact">
+
+                    <asp:Panel ID="KontaktPnl" runat="server" Visible="False">
+                        <ul>
+                            <li>Kontakt/<br />
+                                Skriv en besked
+                        <ul class="submenu">
+
+                            <li><a href="#">Skriv til os</a></li>
+                        </ul>
+                            </li>
+                        </ul>
+
+                    </asp:Panel>
+
+                    <asp:Panel ID="OpretBrugerPnl" runat="server" Visible="True">
+                        <ul>
+                            <li>Kontakt/<br />
+                                Opret Bruger
+                        <ul class="submenu">
+
+
+                            <li><a href="#">Opret Bruger</a></li>
+
+
+                            <li><a href="#">Skriv til os</a></li>
+                        </ul>
+                            </li>
+                        </ul>
+
+                    </asp:Panel>
+                </div>
+
+                <a class="SocialMediaLinks" id="TwitterLink" href="http://twitter.com" target="_blank"></a>
+                <a class="SocialMediaLinks" id="FacebookLink" href="http://facebook.com" target="_blank"></a>
+            </div>
+
+            <div id="leftmenu">
+
+                <a id="Tilbage" href="#">Tilbage</a>
+
+                <a href="ugeprogramBegyndere.aspx" class="programLink">
+                    <img src="img/leftmenu/begyndere-tile.jpg" /></a>
+                <a href="ugeprogramOvede.aspx" class="programLink">
+                    <img src="img/leftmenu/ovede-tile.jpg" /></a>
+                <a href="ugeprogramElite.aspx" class="programLink">
+                    <img src="img/leftmenu/elite-tile.jpg" /></a>
+
+
+            </div>
+            <!--leftmenu-->
+
+            <article>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </article>
+
+            <footer>
+            </footer>
+            <!--footer-->
+
+        </div>
+    </form>
+</body>
+</html>
+
