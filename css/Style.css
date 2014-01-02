@@ -320,8 +320,9 @@ body
 article
 {
     float: left;
-    height: 575px;
-    width: 800px;
+    padding:35px;
+    min-height: 505px;
+    width: 730px;
     /*background-color: antiquewhite;*/
 }
 
