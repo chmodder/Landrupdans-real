@@ -109,7 +109,7 @@ body
 {
     display: inline-block;
     left: 0px;
-    width: 800px;
+    /*width: 800px;*/
 }
 
 #menuOmSkolen:hover ul#submenuOmSkolen
