@@ -15,7 +15,8 @@
 	        Instructors.LastName AS LastName
         FROM Styles 
         LEFT JOIN InstructorStyles ON Styles.Id = InstructorStyles.FkStyleId 
-        LEFT JOIN Instructors ON Instructors.Id = InstructorStyles.FkInstructorId">
+        LEFT JOIN Instructors ON Instructors.Id = InstructorStyles.FkInstructorId
+        ORDER BY Styles.StyleName">
 
     </asp:SqlDataSource>
 

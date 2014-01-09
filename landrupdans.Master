@@ -109,11 +109,11 @@
 
                 <a id="Tilbage" href="#">Tilbage</a>
 
-                <a href="ugeprogramBegyndere.aspx" class="programLink">
+                <a href="WeekProgram.aspx?LevelId=1" class="programLink">
                     <img src="img/leftmenu/begyndere-tile.jpg" /></a>
-                <a href="ugeprogramOvede.aspx" class="programLink">
+                <a href="WeekProgram.aspx?LevelId=2" class="programLink">
                     <img src="img/leftmenu/ovede-tile.jpg" /></a>
-                <a href="ugeprogramElite.aspx" class="programLink">
+                <a href="WeekProgram.aspx?LevelId=3" class="programLink">
                     <img src="img/leftmenu/elite-tile.jpg" /></a>
 
 
