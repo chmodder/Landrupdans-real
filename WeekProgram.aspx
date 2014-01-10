@@ -27,7 +27,7 @@
                     INNER JOIN Age ON Age.Id = Teams.FkAgeId
                     LEFT JOIN Levels ON Teams.FkLevelId = Levels.Id
                     WHERE Weekdays.Id =" 
-                        +  Eval("Weekdays") +
+                        +  Eval("Weekdays") + 
                     "AND Levels.Id =" + Request.QueryString["LevelId"] +
                     "ORDER BY LessonTime.Id"%>'>
 
@@ -47,10 +47,17 @@
                                 <li><%# Eval ("StyleName") %></li>
                                 <li>Aldersgruppe: <%# Eval ("StudentAge") %></li>
 
-                                <asp:Panel ID="JoinTeamFromWeekSchedulePnl" runat="server">
-                                <li><a href='<%#"JoinTeam.aspx?HoldId=" + Eval ("TeamId")%>'> Tilmeld</a></li>
-                                </asp:Panel>
+                                <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex='<%# PanelToggle((Session["BrugerId"]), Eval("TeamId")) %>'>
 
+                                <asp:View ID="JoinTeamFromWeekSchedulePnl" runat="server">
+                                <li><a href='<%#"JoinTeam.aspx?HoldId=" + Eval ("TeamId")%>'> Tilmeld</a></li>
+                                </asp:View>
+
+                                <asp:View ID="QuitTeamFromWeekSchedulePnl" runat="server">
+                                <li><a href='<%#"QuitTeam.aspx?HoldId=" + Eval ("TeamId")%>'> Frameld</a></li>
+                                </asp:View>
+
+                                </asp:MultiView>
                             </ul>
                         </div>
                     </ItemTemplate>

@@ -39,4 +39,30 @@ public class ClassSheet
         return dt;
     }
 
+    public static bool CheckIfStudentIsOnTeam(int SessionUserId, int TeamIdFromQueryString)
+    {
+        SqlCommand sql = new SqlCommand();
+        sql.Parameters.Add("@SessionUserId", SqlDbType.Int).Value = SessionUserId;
+        sql.Parameters.Add("@TeamIdFromQueryString", SqlDbType.Int).Value = TeamIdFromQueryString;
+
+        sql.CommandText = @"
+            SELECT COUNT(*)
+            FROM TeamStudent
+            WHERE FkStudentId = @SessionUserId
+                AND FkTeamId = @TeamIdFromQueryString";
+
+        sql.Connection = conn;
+        conn.Open();
+        int antal = (int)sql.ExecuteScalar();
+        conn.Close();
+        if (antal == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

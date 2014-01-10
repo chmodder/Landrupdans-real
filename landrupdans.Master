@@ -59,7 +59,16 @@
 
                 <div id="loginBox">
 
-                    <a href="#">Login</a>
+                    <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
+                        <asp:View ID="LoginPnl" runat="server">
+                            <a href="Login.aspx">Log ind</a>
+                        </asp:View>
+
+                        <asp:View ID="LogoutPnl" runat="server">
+                            <a href="#">Min side</a>
+                            <a href="#">Log ud</a>
+                        </asp:View>
+                    </asp:MultiView>
 
                     <asp:RadioButtonList ID="SearchRadioList" runat="server"></asp:RadioButtonList>
                     <asp:Button CssClass="SearchBtn" ID="SearchBtn" runat="server" Text="Ok" />
@@ -70,23 +79,24 @@
 
                 <div id="Contact">
 
-                    <asp:Panel ID="KontaktPnl" runat="server" Visible="False">
-                        <ul>
-                            <li>Kontakt/<br />
-                                Skriv en besked
+                    <asp:MultiView ID="MultiView2" runat="server" ActiveViewIndex="1">
+                        <asp:View ID="KontaktPnl" runat="server">
+                            <ul>
+                                <li>Kontakt/<br />
+                                    Skriv en besked
                         <ul class="submenu">
 
                             <li><a href="#">Skriv til os</a></li>
                         </ul>
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
 
-                    </asp:Panel>
+                        </asp:View>
 
-                    <asp:Panel ID="OpretBrugerPnl" runat="server" Visible="True">
-                        <ul>
-                            <li>Kontakt/<br />
-                                Opret Bruger
+                        <asp:View ID="OpretBrugerPnl" runat="server">
+                            <ul>
+                                <li>Kontakt/<br />
+                                    Opret Bruger
                         <ul class="submenu">
 
 
@@ -95,10 +105,12 @@
 
                             <li><a href="#">Skriv til os</a></li>
                         </ul>
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
 
-                    </asp:Panel>
+                        </asp:View>
+
+                    </asp:MultiView>
                 </div>
 
                 <a class="SocialMediaLinks" id="TwitterLink" href="http://twitter.com" target="_blank"></a>
