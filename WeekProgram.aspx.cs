@@ -12,7 +12,7 @@ public partial class WeekProgram : System.Web.UI.Page
 
     }
 
-    protected int PanelToggle(Object SessionUserId, object TeamIdFromQueryString)
+    protected int JoinQuitPanelToggle(Object SessionUserId, object TeamIdFromQueryString)
     {
         int sessionId = Convert.ToInt32(SessionUserId);
         int TeamId = Convert.ToInt32(TeamIdFromQueryString);

@@ -65,4 +65,29 @@ public class ClassSheet
         }
     }
 
+    public static bool CheckIfUserIsLoggedIn(int SessionUserId)
+    {
+        SqlCommand sql = new SqlCommand();
+        sql.Parameters.Add("@SessionUserId", SqlDbType.Int).Value = SessionUserId;
+
+        sql.CommandText = @"
+            SELECT COUNT(*)
+            FROM Students
+            WHERE Id = @SessionUserId";
+
+        sql.Connection = conn;
+        conn.Open();
+        int antal = (int)sql.ExecuteScalar();
+        conn.Close();
+
+        if (antal == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

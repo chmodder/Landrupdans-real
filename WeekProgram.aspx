@@ -47,7 +47,7 @@
                                 <li><%# Eval ("StyleName") %></li>
                                 <li>Aldersgruppe: <%# Eval ("StudentAge") %></li>
 
-                                <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex='<%# PanelToggle((Session["BrugerId"]), Eval("TeamId")) %>'>
+                                <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex='<%# JoinQuitPanelToggle((Session["BrugerId"]), Eval("TeamId")) %>'>
 
                                 <asp:View ID="JoinTeamFromWeekSchedulePnl" runat="server">
                                 <li><a href='<%#"JoinTeam.aspx?HoldId=" + Eval ("TeamId")%>'> Tilmeld</a></li>

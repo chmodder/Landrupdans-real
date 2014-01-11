@@ -6,13 +6,13 @@
 
     <asp:Label ID="UserLoginLbl" runat="server" Text="Bruger login"></asp:Label>
     <br />
-    <asp:TextBox ID="UserNameText" runat="server">Brugernavn</asp:TextBox>
+    <asp:TextBox ID="UserNameText" Placeholder="Brugernavn" runat="server"></asp:TextBox>
     <br />
-    <asp:TextBox ID="PassWordText" runat="server">Kodeord</asp:TextBox>
+    <asp:TextBox ID="PassWordText" Placeholder="Password" runat="server" TextMode="Password">Kodeord</asp:TextBox>
     <br />
     <asp:Button ID="LoginSubmitBtn" runat="server" Text="Log ind" OnClick="LoginSubmitBtn_Click" style="height: 26px" />
-    
-    
+    <br />
+
     
     <%--<br />
     <asp:Label ID="Admin login" runat="server" Text="Label"></asp:Label>

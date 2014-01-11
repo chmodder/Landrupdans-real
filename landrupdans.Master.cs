@@ -9,6 +9,24 @@ public partial class landrupdans : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        MultiView1.DataBind();
+        MultiView2.DataBind();
+    }
+
+
+    protected int UserLoggedInMultiviewToggle(Object SessionUserId)
+    {
+        int sessionId = Convert.ToInt32(SessionUserId);
+
+        if (ClassSheet.CheckIfUserIsLoggedIn(sessionId))
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
 
     }
+
 }
