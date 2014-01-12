@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="landrupdans.Master.cs" Inherits="landrupdans" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="StudentMasterPage.master.cs" Inherits="StudentPages_StudentMasterPage" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,7 @@
 <head id="Head1" runat="server">
 
     <title></title>
-    <link href="css/Style.css" rel="stylesheet" />
+    <link href="~/css/Style.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -66,8 +66,8 @@
                         </asp:View>
 
                         <asp:View ID="LogoutPnl" runat="server">
-                            <a href="StudentPages/Default.aspx">Min side</a>
-                            <asp:Button ID="LogOutBtn" runat="server" Text="Log ud" OnClick="LogOutBtn_Click" />
+                            <a href="/StudentPages/Default.aspx">Min side</a>
+                            <asp:Button ID="LogOutBtn" runat="server" Text="Log ud" OnClick="LogOutBtn_Click"  />
                         </asp:View>
                     </asp:MultiView>
 
@@ -125,12 +125,12 @@
 
                 <a id="Tilbage" href="#">Tilbage</a>
 
-                <a href="WeekProgram.aspx?LevelId=1" class="programLink">
-                    <img src="img/leftmenu/begyndere-tile.jpg" /></a>
-                <a href="WeekProgram.aspx?LevelId=2" class="programLink">
-                    <img src="img/leftmenu/ovede-tile.jpg" /></a>
-                <a href="WeekProgram.aspx?LevelId=3" class="programLink">
-                    <img src="img/leftmenu/elite-tile.jpg" /></a>
+                <a href="/WeekProgram.aspx?LevelId=1" class="programLink">
+                    <img src="/img/leftmenu/begyndere-tile.jpg" /></a>
+                <a href="/WeekProgram.aspx?LevelId=2" class="programLink">
+                    <img src="/img/leftmenu/ovede-tile.jpg" /></a>
+                <a href="/WeekProgram.aspx?LevelId=3" class="programLink">
+                    <img src="/img/leftmenu/elite-tile.jpg" /></a>
 
 
             </div>
@@ -149,4 +149,3 @@
     </form>
 </body>
 </html>
-

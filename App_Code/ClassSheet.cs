@@ -90,4 +90,35 @@ public class ClassSheet
         }
     }
 
+//    //tjekker om bruger allerede er oprettet i systemet
+//    public bool UserIsAllreadyInDB(string UserName, string Email)
+//    {
+//        SqlCommand sql = new SqlCommand();
+
+
+//        sql.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = UserName;
+//        sql.Parameters.Add("@Email", SqlDbType.NVarChar).Value = Email;
+
+
+//        sql.CommandText = @"
+//            SELECT COUNT(*)
+//            FROM Students
+//            WHERE UserName = @UserName
+//            OR Email = @Email";
+
+//        sql.Connection = conn;
+//        conn.Open();
+//        int antal = (int)sql.ExecuteScalar();
+//        conn.Close();
+
+//        if (antal == 1)
+//        {
+//            return true;
+//        }
+//        else
+//        {
+//            return false;
+//        }
+//    }
+
 }

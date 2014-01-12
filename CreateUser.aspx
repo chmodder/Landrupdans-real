@@ -16,16 +16,17 @@
     <asp:TextBox ID="CreatePassWordText" Placeholder="Password" required="required" runat="server" TextMode="Password">Kodeord</asp:TextBox>
     <br />
     <asp:RegularExpressionValidator ID="RegularExpressionEmail" runat="server" ErrorMessage="Det skal være en gyldig emailadresse!" ControlToValidate="CreateEmailText" ValidationExpression="^[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,5}$"></asp:RegularExpressionValidator>
+    <br />
     <asp:TextBox ID="CreateEmailText" Placeholder="Email" required="required" runat="server" TextMode="Email"></asp:TextBox>
     <br />
 
-    <asp:RangeValidator ID="RangeValidatorBirthDay" runat="server" ControlToValidate="CreateBirthdayText" MinimumValue="1" MaximumValue="31" ErrorMessage="Du skal skrive et tal mellem 1 og 31"></asp:RangeValidator>
+   <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ControlToValidate="CreateBirthdayText" ValidationExpression="^(([1-9])|(0\d{1})|([12]\d{1})|(3[0-1]))$" runat="server" ErrorMessage="Du skal skrive et tal mellem 1 og 31"></asp:RegularExpressionValidator>
     <asp:TextBox ID="CreateBirthdayText" Placeholder="Fødselsdag" required="required" runat="server" TextMode="DateTime"></asp:TextBox>
-
-    <asp:RangeValidator ID="RangeValidatorBirthMonth" runat="server" ControlToValidate="CreateBirthMonthText" MinimumValue="1" MaximumValue="12" ErrorMessage="Du skal skrive et tal mellem 1 og 12"></asp:RangeValidator>
+    
+    <asp:RegularExpressionValidator ID="RegularExpressionValidatorBirthMonth" ControlToValidate="CreateBirthMonthText" ValidationExpression="^(([1-9])|(0[1-9])|(1[0-2]))$" runat="server" ErrorMessage="Du skal skrive et tal mellem 1 og 12"></asp:RegularExpressionValidator>
     <asp:TextBox ID="CreateBirthMonthText" Placeholder="Fødselsmåned" required="required" runat="server" TextMode="DateTime"></asp:TextBox>
 
-    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="CreateBirthYearText" ValidationExpression="^\[12][0-9]{3}$" ErrorMessage="RegularExpressionValidator"></asp:RegularExpressionValidator>
+    <asp:RegularExpressionValidator ID="RegularExpressionValidatorBirthyear" runat="server" ControlToValidate="CreateBirthYearText" ValidationExpression="^(19|20)\d{2}|\d{2}$" ErrorMessage="Dette er ikke et gyldigt fødselsår"></asp:RegularExpressionValidator>
     <asp:TextBox ID="CreateBirthYearText" Placeholder="Fødselsår" required="required" runat="server" TextMode="DateTime"></asp:TextBox>
     <br />
     <asp:Button ID="CreateUserBtn" runat="server" Text="Opret bruger" OnClick="CreateUserBtn_Click" />
