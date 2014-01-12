@@ -9,12 +9,13 @@ public partial class StudentPages_StudentMasterPage : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        // Tjek om man er logget ind
-
-        if (Session["BrugerId"] == null)
+        // Tjekker om man er logget ind. Ellers skal brugeren sendes til loginsiden.
+        int SessionUserId = Convert.ToInt32(Session["BrugerId"]);
+        if (!ClassSheet.CheckIfUserIsLoggedIn(SessionUserId))
         {
             Response.Redirect("/Login.aspx");
         }
+
         MultiView1.DataBind();
         MultiView2.DataBind();
     }
