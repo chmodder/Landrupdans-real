@@ -11,4 +11,20 @@ public partial class TeamsByInstructor : System.Web.UI.Page
     {
 
     }
+
+    protected int JoinQuitPanelToggle(Object SessionUserId, object TeamIdFromQueryString)
+    {
+        int sessionId = Convert.ToInt32(SessionUserId);
+        int TeamId = Convert.ToInt32(TeamIdFromQueryString);
+
+        if (ClassSheet.CheckIfStudentIsOnTeam(sessionId, TeamId))
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
 }
