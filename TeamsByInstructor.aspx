@@ -32,7 +32,7 @@
         </SelectParameters>
     </asp:SqlDataSource>
 
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="TeamId" DataSourceID="SqlDataSourceTeamsByInstructor" AllowPaging="True" AllowSorting="True">
+    <%--<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="TeamId" DataSourceID="SqlDataSourceTeamsByInstructor" AllowPaging="True" AllowSorting="True">
 
         <Columns>
             <asp:BoundField DataField="TeamName" HeaderText="Holdnavn" SortExpression="TeamName"></asp:BoundField>
@@ -58,11 +58,33 @@
             </asp:TemplateField>
 
         </Columns>
-    </asp:GridView>
+    </asp:GridView>--%>
 
+    <ul>
+        <asp:Repeater ID="RepeaterTeamsByInstructor" runat="server" DataSourceID="SqlDataSourceTeamsByInstructor">
+            <ItemTemplate>
+                <li><%# Eval ("TeamName") %></li>
+                <li><%# Eval ("StyleName") %></li>
+                <li><%# Eval ("Level") %></li>
+                <li><%# Eval ("Age") %></li>
+                <li><%# Eval ("WeekDay") %></li>
+                <li><%# Eval ("Time") %></li>
 
+                <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex='<%# JoinQuitPanelToggle((Session["BrugerId"]), Eval("TeamId")) %>'>
 
+                    <asp:View ID="JoinTeamFromWeekSchedulePnl" runat="server">
+                        <a href='<%#"JoinTeam.aspx?HoldId=" + Eval ("TeamId")%>'>Tilmeld</a>
+                    </asp:View>
 
+                    <asp:View ID="QuitTeamFromWeekSchedulePnl" runat="server">
+                        <a href='<%#"QuitTeam.aspx?HoldId=" + Eval ("TeamId")%>'>Frameld</a>
+                    </asp:View>
+
+                </asp:MultiView>
+
+            </ItemTemplate>
+        </asp:Repeater>
+    </ul>
 </asp:Content>
 
 

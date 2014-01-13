@@ -71,8 +71,20 @@ public partial class Login : System.Web.UI.Page
             Session["BrugerId"] = reader["Id"];
 
 
-            // Send brugeren videre
-            Response.Redirect("StudentPages/Default.aspx");
+            if (Session["CurrentUrl"] == null)
+            {
+                // Send brugeren videre
+                Response.Redirect("StudentPages/Default.aspx");
+            }
+
+            else
+            {
+                //tager den gemte url og putter den ind i en anden variabel, så sessionvariblen bliver nulstillet
+                string BackToLastPage = (string)Session["CurrentUrl"];
+                Session["CurrentUrl"] = null;
+                Response.Redirect(BackToLastPage);
+            }
+            
         }
 
         else

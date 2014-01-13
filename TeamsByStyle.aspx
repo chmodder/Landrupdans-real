@@ -19,6 +19,7 @@
             </asp:TemplateField>
             <asp:BoundField DataField="Day" HeaderText="Dag"></asp:BoundField>
             <asp:BoundField DataField="TimeOfDay" HeaderText="Tid"></asp:BoundField>
+
         </Columns>
     </asp:GridView>
 

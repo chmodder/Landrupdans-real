@@ -9,7 +9,7 @@ public partial class WeekProgram : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Session["CurrentUrl"] = Request.Url.ToString();
     }
 
     protected int JoinQuitPanelToggle(Object SessionUserId, object TeamIdFromQueryString)

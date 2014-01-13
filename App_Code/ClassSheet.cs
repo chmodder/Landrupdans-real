@@ -121,4 +121,21 @@ public class ClassSheet
 //        }
 //    }
 
+
+    public static void JoinATeam(int BrugerId, int TeamId)
+    {
+        SqlCommand sql = new SqlCommand();
+        sql.Parameters.Add("@BrugerId", SqlDbType.Int).Value = BrugerId;
+        sql.Parameters.Add("@TeamId", SqlDbType.Int).Value = TeamId;
+
+
+        sql.CommandText = @"
+            INSERT INTO TeamStudent (FkStudentId, FkTeamId)
+            VALUES (@BrugerId, @TeamId)";
+
+        sql.Connection = conn;
+        conn.Open();
+        sql.ExecuteNonQuery();
+        conn.Close();
+    }
 }
