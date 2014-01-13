@@ -345,7 +345,7 @@ footer
 .HoldIndhold
 {
     border-top: 2px solid black;
-    font-size:10px;
+    font-size: 10px;
 }
 
     .HoldIndhold:nth-child(even)
@@ -363,3 +363,40 @@ footer
     {
         list-style: none;
     }
+
+/*----------------Instructors.aspx--------------------*/
+.Instructors
+{
+    height: 122px;
+    border: 1px solid black;
+}
+
+.InstructorImgDiv
+{
+    width: 20%;
+    float: left;
+}
+
+.InstructorNameAndStyles
+{
+    width: 25%;
+    float: left;
+}
+
+    .InstructorNameAndStyles > ul > li
+    {
+        list-style-type: none;
+    }
+
+.InstructorInfoDiv
+{
+    width: 30%;
+    float: left;
+}
+
+
+.InstructorTeamsLink
+{
+    width: 10%;
+    float: left;
+}

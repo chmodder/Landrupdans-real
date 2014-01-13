@@ -12,6 +12,7 @@ public partial class Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
         if (!IsPostBack)
         {
             if (Request.Cookies["UserName"] != null && Request.Cookies["Password"] != null)
@@ -23,19 +24,26 @@ public partial class Login : System.Web.UI.Page
     }
     protected void LoginSubmitBtn_Click(object sender, EventArgs e)
     {
+        //laver en coockie med brugernavn og adgangskode, som husker brugeren
+
+        // husker brugernavn og adgangskode i 30 dage, hvis man har hakket tjekboksen af
         if (chkRememberMe.Checked)
         {
             Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(30);
             Response.Cookies["Password"].Expires = DateTime.Now.AddDays(30);
         }
+            //Laver eller overskriver en cookie, som ikke husker brugernavn og adgangskode, hvis man IKKE har hakket tjekboksen af
         else
         {
             Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(-1);
             Response.Cookies["Password"].Expires = DateTime.Now.AddDays(-1);
 
         }
+        //Trim fjerner whitespace fra det indtastede inden brugernavn og adgangskoden bliver gemt i coockien.
         Response.Cookies["UserName"].Value = UserNameText.Text.Trim();
         Response.Cookies["Password"].Value = PassWordText.Text.Trim();
+
+        
 
         // opret forbindelse til databasen
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
