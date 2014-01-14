@@ -32,7 +32,7 @@
         </SelectParameters>
     </asp:SqlDataSource>
 
-    <%--<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="TeamId" DataSourceID="SqlDataSourceTeamsByInstructor" AllowPaging="True" AllowSorting="True">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="TeamId" DataSourceID="SqlDataSourceTeamsByInstructor" AllowPaging="True" AllowSorting="True">
 
         <Columns>
             <asp:BoundField DataField="TeamName" HeaderText="Holdnavn" SortExpression="TeamName"></asp:BoundField>
@@ -58,9 +58,9 @@
             </asp:TemplateField>
 
         </Columns>
-    </asp:GridView>--%>
+    </asp:GridView>
 
-    <ul>
+    <%--<ul>
         <asp:Repeater ID="RepeaterTeamsByInstructor" runat="server" DataSourceID="SqlDataSourceTeamsByInstructor">
             <ItemTemplate>
                 <li><%# Eval ("TeamName") %></li>
@@ -84,7 +84,7 @@
 
             </ItemTemplate>
         </asp:Repeater>
-    </ul>
+    </ul>--%>
 </asp:Content>
 
 

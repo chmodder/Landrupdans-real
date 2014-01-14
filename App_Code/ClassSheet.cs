@@ -36,6 +36,7 @@ public class ClassSheet
         SqlDataAdapter da = new SqlDataAdapter(sql);
         DataTable dt = new DataTable();
         da.Fill(dt);
+        conn.Close();
         return dt;
     }
 
@@ -90,36 +91,36 @@ public class ClassSheet
         }
     }
 
-//    //tjekker om bruger allerede er oprettet i systemet
-//    public bool UserIsAllreadyInDB(string UserName, string Email)
-//    {
-//        SqlCommand sql = new SqlCommand();
+    //    //tjekker om bruger allerede er oprettet i systemet
+    //    public bool UserIsAllreadyInDB(string UserName, string Email)
+    //    {
+    //        SqlCommand sql = new SqlCommand();
 
 
-//        sql.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = UserName;
-//        sql.Parameters.Add("@Email", SqlDbType.NVarChar).Value = Email;
+    //        sql.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = UserName;
+    //        sql.Parameters.Add("@Email", SqlDbType.NVarChar).Value = Email;
 
 
-//        sql.CommandText = @"
-//            SELECT COUNT(*)
-//            FROM Students
-//            WHERE UserName = @UserName
-//            OR Email = @Email";
+    //        sql.CommandText = @"
+    //            SELECT COUNT(*)
+    //            FROM Students
+    //            WHERE UserName = @UserName
+    //            OR Email = @Email";
 
-//        sql.Connection = conn;
-//        conn.Open();
-//        int antal = (int)sql.ExecuteScalar();
-//        conn.Close();
+    //        sql.Connection = conn;
+    //        conn.Open();
+    //        int antal = (int)sql.ExecuteScalar();
+    //        conn.Close();
 
-//        if (antal == 1)
-//        {
-//            return true;
-//        }
-//        else
-//        {
-//            return false;
-//        }
-//    }
+    //        if (antal == 1)
+    //        {
+    //            return true;
+    //        }
+    //        else
+    //        {
+    //            return false;
+    //        }
+    //    }
 
 
     public static void JoinATeam(int BrugerId, int TeamId)
@@ -138,4 +139,97 @@ public class ClassSheet
         sql.ExecuteNonQuery();
         conn.Close();
     }
+
+    public static void QuitATeam(int BrugerId, int TeamId)
+    {
+        SqlCommand sql = new SqlCommand();
+        sql.Parameters.Add("@BrugerId", SqlDbType.Int).Value = BrugerId;
+        sql.Parameters.Add("@TeamId", SqlDbType.Int).Value = TeamId;
+
+
+        sql.CommandText = @"
+            DELETE FROM TeamStudent
+            WHERE FkStudentId = @BrugerId
+            AND FkTeamId = @TeamId";
+
+        sql.Connection = conn;
+        conn.Open();
+        sql.ExecuteNonQuery();
+        conn.Close();
+    }
+
+    public static bool CheckIfUserAgeMatchTeamAge(int BrugerId, int TeamId)
+    {
+        SqlCommand sql = new SqlCommand();
+        sql.Parameters.Add("@SessionUserId", SqlDbType.Int).Value = BrugerId;
+
+        sql.CommandText = @"
+            SELECT Students.Birthday AS Birthday
+            FROM Students
+            WHERE Students.Id = @SessionUserId";
+
+        sql.Connection = conn;
+        conn.Open();
+        SqlDataReader reader = sql.ExecuteReader();
+        reader.Read();
+        DateTime UserBirthday = Convert.ToDateTime(reader["Birthday"]);
+        conn.Close();
+        DateTime Today = DateTime.Now;
+
+        //Udregner brugerens alder til int
+        int UserAge = Today.Year - UserBirthday.Year;
+
+        int TeamAge = GetTeamAge(TeamId);
+
+        switch (TeamAge)
+        {
+            case 1:
+                TeamAge = 3 | 4 | 5;
+                break;
+            case 2:
+                TeamAge = 6 | 7 | 8;
+                break;
+            case 3:
+                TeamAge = 9 | 10 | 11 | 12 | 13 | 14;
+                break;
+            case 4:
+                TeamAge = 15 | 16 | 17 | 18;
+                break;
+            case 5:
+                TeamAge = 19;
+                break;
+            
+        }
+
+
+        if ((TeamAge != UserAge) | (TeamAge == 19 && UserAge < 19))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    private static int GetTeamAge(int TeamId)
+    {
+        SqlCommand sql = new SqlCommand();
+        sql.Parameters.Add("@TeamIdFromQueryString", SqlDbType.Int).Value = TeamId;
+
+        sql.CommandText = @"
+            SELECT Teams.FkAgeId AS Age
+            FROM Teams
+            WHERE Teams.Id = @TeamIdFromQueryString";
+
+        sql.Connection = conn;
+        conn.Open();
+        SqlDataReader reader = sql.ExecuteReader();
+        reader.Read();
+
+        int TeamAge = Convert.ToInt32(reader["Age"]);
+        conn.Close();
+        return TeamAge;
+    }
+
 }
