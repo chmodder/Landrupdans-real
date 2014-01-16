@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -17,5 +18,38 @@ public partial class TeamsByStyle : System.Web.UI.Page
 
         //Databinder til gridviewet
         GridViewTeamsByStyle.DataBind();
+    }
+
+
+    protected void GridViewTeamsByStyle_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        DataTable dataTable = GridViewTeamsByStyle.DataSource as DataTable;
+
+        if (dataTable != null)
+        {
+            DataView dataView = new DataView(dataTable);
+            dataView.Sort = e.SortExpression + " " + ConvertSortDirectionToSql(e.SortDirection);
+
+            GridViewTeamsByStyle.DataSource = dataView;
+            GridViewTeamsByStyle.DataBind();
+        }
+    }
+
+    private string ConvertSortDirectionToSql(SortDirection sortDirection)
+    {
+        string newSortDirection = String.Empty;
+
+        switch (sortDirection)
+        {
+            case SortDirection.Ascending:
+                newSortDirection = "ASC";
+                break;
+
+            case SortDirection.Descending:
+                newSortDirection = "DESC";
+                break;
+        }
+
+        return newSortDirection;
     }
 }

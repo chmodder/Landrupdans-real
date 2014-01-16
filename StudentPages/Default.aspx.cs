@@ -11,4 +11,8 @@ public partial class StudentPages_Default : System.Web.UI.Page
     {
 
     }
+    protected void SeeMyTeamsBtn_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("MyTeams.aspx");
+    }
 }

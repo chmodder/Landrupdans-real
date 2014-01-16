@@ -23,7 +23,7 @@
                     <li id="menuStilarter">Stilarter
 
                         <ul id="submenuStilarter">
-                            <li><a href="styles.aspx">Gå til stilarter</a></li>
+                            <li><a href="../styles.aspx">Gå til stilarter</a></li>
                         </ul>
 
                     </li>

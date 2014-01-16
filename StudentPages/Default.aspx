@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
     <asp:LinkButton ID="EditMyInfoBtn" runat="server">Min info</asp:LinkButton>
-    <asp:LinkButton ID="SeeMyTeamsBtn" runat="server">Tilmeldte Hold</asp:LinkButton>
+    <asp:LinkButton ID="SeeMyTeamsBtn" runat="server" OnClick="SeeMyTeamsBtn_Click">Tilmeldte Hold</asp:LinkButton>
 
 </asp:Content>
 

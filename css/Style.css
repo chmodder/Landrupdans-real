@@ -187,12 +187,12 @@ body
 }
 
 
-    #Contact > div li
+    #Contact li
     {
         list-style-type: none;
     }
 
-    #Contact > div > ul > li
+    #Contact > ul > li
     {
         float: left;
         display: block;
@@ -204,13 +204,13 @@ body
         background-color: white;
     }
 
-        #Contact > div > ul > li:hover
+        #Contact > ul > li:hover
         {
             background-color: #595958;
             color: white;
         }
 
-        #Contact > div > ul > li > ul
+        #Contact > ul > li > ul
         {
             height: 35px;
             display: none;
@@ -221,13 +221,13 @@ body
         }
 
 
-        #Contact > div > ul > li:hover > ul
+        #Contact > ul > li:hover > ul
         {
             width: 321px;
             display: inline-block;
         }
 
-    #Contact > div ul > li > ul > li
+    #Contact ul > li > ul > li
     {
         float: left;
         padding: 0 5px 0 5px;
@@ -235,7 +235,7 @@ body
 
 
     /*Styler på elementer i panel til opret menuen*/
-    #Contact > div > ul > li > ul > li a
+    #Contact > ul > li > ul > li a
     {
         float: left;
         line-height: 35px;
@@ -243,14 +243,14 @@ body
     }
 
     /*Styler på elementer til opret menuen*/
-    #Contact > div > ul > li > ul > li > a
+    #Contact > ul > li > ul > li > a
     {
         float: left;
         line-height: 35px;
         color: white;
     }
 
-        #Contact > div > ul > li > ul > li > a:hover
+        #Contact > ul > li > ul > li > a:hover
         {
             color: lightgrey;
         }
