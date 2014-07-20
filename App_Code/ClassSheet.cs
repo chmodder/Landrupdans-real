@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 /// <summary>
 /// Summary description for ClassSheet
@@ -20,7 +21,7 @@ public class ClassSheet
         sql.Parameters.Add("@StyleQueryString", SqlDbType.Int).Value = StyleQueryStr;
 
         sql.CommandText = @"
-            SELECT Teams.TeamName, Levels.Level, Age.StudentAge, CONCAT(Instructors.FirstName,' ', Instructors.LastName) AS Instructor, Weekdays.Day, LessonTime.TimeOfDay
+            SELECT Teams.TeamName, Levels.Level, Age.StudentAge, CONCAT(Instructors.FirstName,' ', Instructors.LastName) AS Instructor, Weekdays.Day, Weekdays.Id AS DayId, LessonTime.TimeOfDay, LessonTime.Id AS TimeId
             FROM Styles
             INNER JOIN Teams ON Teams.FkStyleId = Styles.Id
             INNER JOIN Instructors ON Instructors.Id = Teams.FkInstructorId
@@ -232,4 +233,5 @@ public class ClassSheet
         return TeamAge;
     }
 
+    
 }
