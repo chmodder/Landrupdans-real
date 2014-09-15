@@ -66,16 +66,23 @@
                         </asp:View>
 
                         <asp:View ID="LogoutPnl" runat="server">
-                            <a href="/StudentPages/Default.aspx">Min side</a>
-                            <asp:Button ID="LogOutBtn" runat="server" Text="Log ud" OnClick="LogOutBtn_Click"  />
+                            <asp:HyperLink ID="HyperLink1" NavigateUrl='<%# ResolveClientUrl("~/StudentPages/Default.aspx") %>' runat="server">Min side</asp:HyperLink>
+                            <asp:Button ID="LogOutBtn" runat="server" Text="Log ud" OnClick="LogOutBtn_Click" />
                         </asp:View>
                     </asp:MultiView>
 
-
-                    <asp:RadioButtonList ID="SearchRadioList" runat="server"></asp:RadioButtonList>
+                    <div id="SearchBox">
+                        <asp:Button CssClass="SearchBtn" ID="SearchBtn" runat="server" Text="Ok" OnClick="SearchBtn_OnClick" />
+                        <asp:TextBox CssClass="SearchBox" ID="SearchTbx" runat="server"></asp:TextBox> 
+                        <br/>
+                        <asp:CheckBoxList ID="SearchCbl" runat="server">
+                            <asp:ListItem Value="Activity">Aktivitet</asp:ListItem>
+                            <asp:ListItem Value="Instructor">Instruktør</asp:ListItem>
+                        </asp:CheckBoxList>
+                    </div>
+                    <%--<asp:RadioButtonList ID="SearchRadioList" runat="server"></asp:RadioButtonList>
                     <asp:Button CssClass="SearchBtn" ID="SearchBtn" runat="server" Text="Ok" />
-                    <asp:TextBox CssClass="SearchBox" ID="SearchText" runat="server"></asp:TextBox>
-
+                    <asp:TextBox CssClass="SearchBox" ID="SearchText" runat="server"></asp:TextBox>--%>
                 </div>
 
 
@@ -125,6 +132,8 @@
 
                 <a id="Tilbage" href="#">Tilbage</a>
 
+                <%--<a href='<%# ResolveClientUrl("~/WeekProgram.aspx?LevelId=1") %>' class="programLink">
+                    <img src='<%# ResolveClientUrl("~/img/leftmenu/begyndere-tile.jpg") %>' /></a>   --%>
                 <a href="/WeekProgram.aspx?LevelId=1" class="programLink">
                     <img src="/img/leftmenu/begyndere-tile.jpg" /></a>
                 <a href="/WeekProgram.aspx?LevelId=2" class="programLink">

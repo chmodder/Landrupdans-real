@@ -41,4 +41,15 @@ public partial class StudentPages_StudentMasterPage : System.Web.UI.MasterPage
         Session["BrugerId"] = null;
         Response.Redirect("/Default.aspx");
     }
+
+    protected void SearchBtn_OnClick(object sender, EventArgs e)
+    {
+        string SearchText = SearchTbx.Text;
+
+        //Search 
+
+        //Search all
+
+        //Search specific tables using search parameteres.
+    }
 }
