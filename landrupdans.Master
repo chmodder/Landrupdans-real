@@ -62,7 +62,7 @@
                     <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex='<%# UserLoggedInMultiviewToggle(Session["BrugerId"]) %>'>
 
                         <asp:View ID="LoginPnl" runat="server">
-                            <asp:LinkButton ID="LogInBtn" PostBackUrl='<%# ResolveClientUrl("~/Login.aspx")%>' runat="server">Log ind</asp:LinkButton>
+                            <asp:LinkButton ID="LogInBtn" PostBackUrl='<%# ResolveClientUrl("~/Login.aspx")%>' runat="server" >Log ind</asp:LinkButton>
                         </asp:View>
 
                         <asp:View ID="LogoutPnl" runat="server">
@@ -70,17 +70,22 @@
                             <asp:Button ID="LogOutBtn" runat="server" Text="Log ud" OnClick="LogOutBtn_Click" />
                         </asp:View>
                     </asp:MultiView>
-                    
+
                     <div id="SearchBox">
                         <asp:Button CssClass="SearchBtn" ID="SearchBtn" runat="server" Text="Ok" />
-                        <asp:TextBox CssClass="SearchBox" ID="SearchText" runat="server"></asp:TextBox>    
-                        <br />   
-                        <asp:CheckBoxList ID="SearchCbl" runat="server">
-                            <asp:ListItem Value="Activity">Aktivitet</asp:ListItem>
-                            <asp:ListItem Value="Instructor">Instruktør</asp:ListItem>
-                        </asp:CheckBoxList>
+                        <asp:TextBox CssClass="SearchBox" ID="SearchTbx" runat="server"></asp:TextBox>
+                        <br />
+                        <asp:Button ID="AdvSearchBtn" runat="server" Text="Søgefiltre" />
+                        <asp:Panel ID="AdvSearch" runat="server">
+                            <asp:CheckBoxList ID="SearchCbl" runat="server">
+                                <asp:ListItem Value="Activity">Aktivitet</asp:ListItem>
+                                <asp:ListItem Value="Instructor">Instruktør</asp:ListItem>
+                            </asp:CheckBoxList>
+                        </asp:Panel>
                     </div>
-
+                    <%--<asp:RadioButtonList ID="SearchRadioList" runat="server"></asp:RadioButtonList>
+                    <asp:Button CssClass="SearchBtn" ID="SearchBtn" runat="server" Text="Ok" />
+                    <asp:TextBox CssClass="SearchBox" ID="SearchText" runat="server"></asp:TextBox>--%>
                 </div>
 
 

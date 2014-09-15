@@ -13,7 +13,7 @@ public partial class StudentPages_StudentMasterPage : System.Web.UI.MasterPage
         int SessionUserId = Convert.ToInt32(Session["BrugerId"]);
         if (!ClassSheet.CheckIfUserIsLoggedIn(SessionUserId))
         {
-            Response.Redirect("/Login.aspx");
+            Response.Redirect(ResolveClientUrl("~/Login.aspx"));
         }
 
         MultiView1.DataBind();
@@ -39,7 +39,7 @@ public partial class StudentPages_StudentMasterPage : System.Web.UI.MasterPage
     protected void LogOutBtn_Click(object sender, EventArgs e)
     {
         Session["BrugerId"] = null;
-        Response.Redirect("/Default.aspx");
+        Response.Redirect(ResolveClientUrl("~/Default.aspx"));
     }
 
     protected void SearchBtn_OnClick(object sender, EventArgs e)

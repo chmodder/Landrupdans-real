@@ -73,12 +73,15 @@
 
                     <div id="SearchBox">
                         <asp:Button CssClass="SearchBtn" ID="SearchBtn" runat="server" Text="Ok" OnClick="SearchBtn_OnClick" />
-                        <asp:TextBox CssClass="SearchBox" ID="SearchTbx" runat="server"></asp:TextBox> 
-                        <br/>
-                        <asp:CheckBoxList ID="SearchCbl" runat="server">
-                            <asp:ListItem Value="Activity">Aktivitet</asp:ListItem>
-                            <asp:ListItem Value="Instructor">Instruktør</asp:ListItem>
-                        </asp:CheckBoxList>
+                        <asp:TextBox CssClass="SearchBox" ID="SearchTbx" runat="server"></asp:TextBox>
+                        <br />
+                        <asp:Button ID="AdvSearchBtn" runat="server" Text="Søgefiltre" />
+                        <asp:Panel ID="AdvSearch" runat="server">
+                            <asp:CheckBoxList ID="SearchCbl" runat="server">
+                                <asp:ListItem Value="Activity">Aktivitet</asp:ListItem>
+                                <asp:ListItem Value="Instructor">Instruktør</asp:ListItem>
+                            </asp:CheckBoxList>
+                        </asp:Panel>
                     </div>
                     <%--<asp:RadioButtonList ID="SearchRadioList" runat="server"></asp:RadioButtonList>
                     <asp:Button CssClass="SearchBtn" ID="SearchBtn" runat="server" Text="Ok" />
@@ -134,14 +137,15 @@
 
                 <%--<a href='<%# ResolveClientUrl("~/WeekProgram.aspx?LevelId=1") %>' class="programLink">
                     <img src='<%# ResolveClientUrl("~/img/leftmenu/begyndere-tile.jpg") %>' /></a>   --%>
-                <a href="/WeekProgram.aspx?LevelId=1" class="programLink">
-                    <img src="/img/leftmenu/begyndere-tile.jpg" /></a>
-                <a href="/WeekProgram.aspx?LevelId=2" class="programLink">
-                    <img src="/img/leftmenu/ovede-tile.jpg" /></a>
-                <a href="/WeekProgram.aspx?LevelId=3" class="programLink">
-                    <img src="/img/leftmenu/elite-tile.jpg" /></a>
+                <%--                       <asp:Image ID="Image2" ImageUrl='~/img/leftmenu/begyndere-tile.jpg' runat="server" />--%>
 
-
+                <%--                <asp:HyperLink ID="HyperLink2" CssClass="programLink" NavigateUrl='<%# ResolveClientUrl("~/WeekProgram.aspx?LevelId=1") %>' ImageUrl='<%# ResolveClientUrl("~/img/leftmenu/begyndere-tile.jpg") %>' runat="server">hej</asp:HyperLink>--%>
+                <a href="../WeekProgram.aspx?LevelId=1" class="programLink">
+                     <img src="../img/leftmenu/begyndere-tile.jpg" /></a>
+                <a href="../WeekProgram.aspx?LevelId=2" class="programLink">
+                    <img src="../img/leftmenu/ovede-tile.jpg" /></a>
+                <a href="../WeekProgram.aspx?LevelId=3" class="programLink">
+                    <img src="../img/leftmenu/elite-tile.jpg" /></a>
             </div>
             <!--leftmenu-->
 

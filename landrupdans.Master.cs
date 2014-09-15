@@ -32,6 +32,6 @@ public partial class landrupdans : System.Web.UI.MasterPage
     protected void LogOutBtn_Click(object sender, EventArgs e)
     {
         Session["BrugerId"] = null;
-        Response.Redirect("/Default.aspx");
+        Response.Redirect(ResolveClientUrl("~/Default.aspx"));
     }
 }

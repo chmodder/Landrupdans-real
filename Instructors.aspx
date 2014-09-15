@@ -25,7 +25,7 @@
         <ItemTemplate>
             <div class="Instructors">
                 <div class="InstructorImgDiv">
-                    <asp:Image ID="InstructorImg" ImageUrl='<%#"/img/Instructors/resized/" +  Eval ("InstructorImg") %>' runat="server" Width="120px" />
+                    <asp:Image ID="InstructorImg" ImageUrl='<%# ResolveClientUrl("~/img/Instructors/resized/") +  Eval ("InstructorImg") %>' runat="server" Width="120px" />
 
                 </div>
 
