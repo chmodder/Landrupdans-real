@@ -59,17 +59,19 @@
 
                 <div id="loginBox">
 
-                    <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex='<%# UserLoggedInMultiviewToggle(Session["BrugerId"]) %>'>
+                    <div id="UserButtonsBox">
+                        <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex='<%# UserLoggedInMultiviewToggle(Session["BrugerId"]) %>'>
 
-                        <asp:View ID="LoginPnl" runat="server">
-                            <asp:LinkButton ID="LogInBtn" PostBackUrl='<%# ResolveClientUrl("~/Login.aspx")%>' runat="server" >Log ind</asp:LinkButton>
-                        </asp:View>
+                            <asp:View ID="LoginPnl" runat="server">
+                                <asp:LinkButton ID="LogInBtn" PostBackUrl='<%# ResolveClientUrl("~/Login.aspx")%>' runat="server">Log ind</asp:LinkButton>
+                            </asp:View>
 
-                        <asp:View ID="LogoutPnl" runat="server">
-                            <asp:HyperLink ID="HyperLink1" NavigateUrl='<%# ResolveClientUrl("~/StudentPages/Default.aspx") %>' runat="server">Min side</asp:HyperLink>
-                            <asp:Button ID="LogOutBtn" runat="server" Text="Log ud" OnClick="LogOutBtn_Click" />
-                        </asp:View>
-                    </asp:MultiView>
+                            <asp:View ID="LogoutPnl" runat="server">
+                                <asp:HyperLink ID="HyperLink1" NavigateUrl='<%# ResolveClientUrl("~/StudentPages/Default.aspx") %>' runat="server">Min side</asp:HyperLink>
+                                <asp:Button ID="LogOutBtn" runat="server" Text="Log ud" OnClick="LogOutBtn_Click" />
+                            </asp:View>
+                        </asp:MultiView>
+                    </div>
 
                     <div id="SearchBox">
                         <asp:Button CssClass="SearchBtn" ID="SearchBtn" runat="server" Text="Ok" />

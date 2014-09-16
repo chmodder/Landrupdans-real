@@ -62,7 +62,7 @@
                     <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex='<%# UserLoggedInMultiviewToggle(Session["BrugerId"]) %>'>
 
                         <asp:View ID="LoginPnl" runat="server">
-                            <asp:LinkButton ID="LogInBtn" PostBackUrl="/Login.aspx" runat="server">Log ind</asp:LinkButton>
+                            <asp:LinkButton ID="LogInBtn" PostBackUrl='<%# ResolveClientUrl("~/Login.aspx")%>' runat="server">Log ind</asp:LinkButton>
                         </asp:View>
 
                         <asp:View ID="LogoutPnl" runat="server">
@@ -81,6 +81,15 @@
                                 <asp:ListItem Value="Activity">Aktivitet</asp:ListItem>
                                 <asp:ListItem Value="Instructor">Instruktør</asp:ListItem>
                             </asp:CheckBoxList>
+                            <br />
+                            <asp:DropDownList ID="DayDdl"  runat="server" DataSourceID="DaySqlDs" AppendDataBoundItems="True" DataTextField="Day" DataValueField="Id" >
+                                <asp:ListItem Value="0" Enabled="True">Alle dage</asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:SqlDataSource runat="server" ID="DaySqlDs" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' SelectCommand="SELECT [Id], [Day] FROM [Weekdays]"></asp:SqlDataSource>
+                            <asp:DropDownList ID="TimeDdl" runat="server" DataSourceID="TimeSqlDs" AppendDataBoundItems="True" DataTextField="TimeOfDay" DataValueField="Id">
+                                <asp:ListItem Value="0" Enabled="True">Alle tider</asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:SqlDataSource runat="server" ID="TimeSqlDs" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' SelectCommand="SELECT [Id], [TimeOfDay] FROM [LessonTime]"></asp:SqlDataSource>
                         </asp:Panel>
                     </div>
                     <%--<asp:RadioButtonList ID="SearchRadioList" runat="server"></asp:RadioButtonList>
@@ -141,7 +150,7 @@
 
                 <%--                <asp:HyperLink ID="HyperLink2" CssClass="programLink" NavigateUrl='<%# ResolveClientUrl("~/WeekProgram.aspx?LevelId=1") %>' ImageUrl='<%# ResolveClientUrl("~/img/leftmenu/begyndere-tile.jpg") %>' runat="server">hej</asp:HyperLink>--%>
                 <a href="../WeekProgram.aspx?LevelId=1" class="programLink">
-                     <img src="../img/leftmenu/begyndere-tile.jpg" /></a>
+                    <img src="../img/leftmenu/begyndere-tile.jpg" /></a>
                 <a href="../WeekProgram.aspx?LevelId=2" class="programLink">
                     <img src="../img/leftmenu/ovede-tile.jpg" /></a>
                 <a href="../WeekProgram.aspx?LevelId=3" class="programLink">
@@ -150,6 +159,8 @@
             <!--leftmenu-->
 
             <article>
+                <asp:Panel ID="SearchResultsPnl" Visible="False" runat="server">
+                </asp:Panel>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
             </article>
