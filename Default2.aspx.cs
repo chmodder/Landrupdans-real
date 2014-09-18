@@ -19,7 +19,7 @@ public partial class Default2 : System.Web.UI.Page
         //- searchstring
         //- day
         //- time
-        //- checkboxItems
+        //- checkboxItems (value as tablenames?)
 
         //1) Create searchString (SQL) based on search settings
         //2) Search
@@ -31,16 +31,16 @@ public partial class Default2 : System.Web.UI.Page
                                   INNER JOIN Levels ON Levels.Id = Teams.FkLevelId";
         //Add to string using "SqlSearchQuery += 'something to add'"
 
+        ArrayList CheckedItems = CheckItems();
         string SearchText = SearchTbx.Text;
         //testing
         //Response.Write(SearchText);
 
         //string QueryString = SqlQueryBuilder(SearchText);
         //RunSearch(QueryString);
-        //Response.Write(QueryString);
 
         //Searchstring used
-        #region SearchString
+        #region SearchString is not empty
         if (SearchText.Length > 0)
         {
             #region NoCheckboxIsChecked
@@ -59,7 +59,7 @@ public partial class Default2 : System.Web.UI.Page
                 else if (DayDdl.SelectedValue != "0" && TimeDdl.SelectedItem.Value != "0")
                 {
                     //Search teams on selected Day AND Time.
-                    Response.Write("2) Nu skal alle hold, hvor <br/>(instruktør-navnet, instruktør-info, aktivitet-navn eller aktivitet-beskrivelse - Det kan også være andre tabeller, da der ikke er checkbox-filter på søgningen)<br/> indeholder søgestrengen vises OG hvor Tid og dato svarer til det valgte");
+                    Response.Write("2) Nu skal alle hold, hvor <br/>instruktør-navnet, instruktør-info, aktivitet-navn eller aktivitet-beskrivelse - (Det kan også være andre tabeller, da der ikke er checkbox-filter på søgningen)<br/> indeholder søgestrengen OG hvor Tid og dato svarer til det valgte vises");
                 }
 
                 //Only Day IS Checked
@@ -85,22 +85,23 @@ public partial class Default2 : System.Web.UI.Page
             else
             {
                 //CHECK DATE AND TIME
+                #region Day AND Time not picked
                 //Day OR Time not checked:
                 if (DayDdl.SelectedItem.Value == "0" && TimeDdl.SelectedItem.Value == "0")
                 {
                     //Hvis IKKE begge felter ("Aktivitet" og "Instruktør") er hakket af
-                    if (SearchCbl.SelectedItem.Value != "Activity" && SearchCbl.SelectedItem.Value != "Instructor")
+                    if (!(CheckedItems.Contains("Activity") && CheckedItems.Contains("Instructor")))
                     {
                         switch (SearchCbl.SelectedItem.Value)
                         {
                             //Search for all Activities
                             case "Activity":
-                                Response.Write("5) Nu skal hold, hvor aktivitet-navnet indeholder søgestrengen vises");
+                                Response.Write("5) Nu skal hold, hvor aktivitet-navnet eller aktivitet-beksrivelse indeholder søgestrengen vises");
                                 break;
 
                             //Search for all Instructors
                             case "Instructor":
-                                Response.Write("6) Nu skal hold, hvor instruktør-navnet indeholder søgestrengen vises");
+                                Response.Write("6) Nu skal hold, hvor instruktør-navnet eller Instruktør-info indeholder søgestrengen vises");
                                 break;
                         }
                     }
@@ -132,23 +133,25 @@ public partial class Default2 : System.Web.UI.Page
                     //} 
                     #endregion
                 }
+                #endregion
 
+                #region BOTH Day AND Time is picked
                 //Both Day AND Time is checked
                 else if (DayDdl.SelectedValue != "0" && TimeDdl.SelectedItem.Value != "0")
                 {
                     //Hvis IKKE begge felter ("Aktivitet" og "Instruktør") er hakket af
-                    if (!(SearchCbl.SelectedItem.Value == "Activity" && SearchCbl.SelectedItem.Value == "Instructor"))
+                    if (!(CheckedItems.Contains("Activity") && CheckedItems.Contains("Instructor")))
                     {
                         switch (SearchCbl.SelectedItem.Value)
                         {
                             //Search for all Activities on selected Day AND Time
                             case "Activity":
-                                Response.Write("7) Nu skal hold, hvor aktivitet-navnet eller aktivitet-beskrivelsen indeholder søgestrengen vises OG hvor Tid og dato svarer til det valgte ");
+                                Response.Write("7) Nu skal hold, hvor aktivitet-navnet eller aktivitet-beskrivelsen indeholder søgestrengen OG hvor Tid og dato svarer til det valgte vises.");
                                 break;
 
                             //Search for all Instructors
                             case "Instructor":
-                                Response.Write("8) Nu skal hold, hvor instruktør-navnet eller instruktør-info indeholder søgestrengen vises OG hvor Tid og dato svarer til det valgte  ");
+                                Response.Write("8) Nu skal hold, hvor instruktør-navnet eller instruktør-info indeholder søgestrengen OG hvor Tid og dato svarer til det valgte vises  ");
                                 break;
                         }
                     }
@@ -161,12 +164,14 @@ public partial class Default2 : System.Web.UI.Page
                         Response.Write("9) Nu skal alle hold, hvor instruktør-navnet, instruktør-info, aktivitet-navn eller aktivitet-beskrivelse indeholder søgestrengen vises OG hvor Tid og dato svarer til det valgte");
                     }
                 }
+                #endregion
 
+                #region Only Day is picked
                 //Day is Checked
                 else if (DayDdl.SelectedValue != "0")
                 {
                     //Hvis IKKE begge felter ("Aktivitet" og "Instruktør") er hakket af
-                    if (!(SearchCbl.SelectedItem.Value == "Activity" && SearchCbl.SelectedItem.Value == "Instructor"))
+                    if (!(CheckedItems.Contains("Activity") && CheckedItems.Contains("Instructor")))
                     {
                         switch (SearchCbl.SelectedItem.Value)
                         {
@@ -177,7 +182,7 @@ public partial class Default2 : System.Web.UI.Page
 
                             //Search for all Instructors
                             case "Instructor":
-                                Response.Write("11) Nu skal hold, hvor instruktør-navnet eller instruktør-info indeholder søgestrengen vises OG hvor dato svarer til det valgte  ");
+                                Response.Write("11) Nu skal hold, hvor instruktør-navnet eller instruktør-info indeholder søgestrengen OG hvor dato svarer til det valgte vises  ");
                                 break;
                         }
                     }
@@ -190,12 +195,14 @@ public partial class Default2 : System.Web.UI.Page
                         Response.Write("12) Nu skal alle hold, hvor instruktør-navnet, instruktør-info, aktivitet-navn eller aktivitet-beskrivelse indeholder søgestrengen vises OG hvor dato svarer til det valgte");
                     }
                 }
+                #endregion
 
+                #region Only Time is picked
                 //Time is checked //
                 else
                 {
                     //Hvis IKKE begge felter ("Aktivitet" og "Instruktør") er hakket af
-                    if (!(SearchCbl.SelectedItem.Value == "Activity" && SearchCbl.SelectedItem.Value == "Instructor"))
+                    if (!(CheckedItems.Contains("Activity") && CheckedItems.Contains("Instructor")))
                     {
                         switch (SearchCbl.SelectedItem.Value)
                         {
@@ -218,7 +225,9 @@ public partial class Default2 : System.Web.UI.Page
                         //Search all Activities AND Instructors that has a team?  
                         Response.Write("15) Nu skal alle hold, hvor instruktør-navnet, instruktør-info, aktivitet-navn eller aktivitet-beskrivelse indeholder søgestrengen vises OG hvor tid svarer til det valgte");
                     }
+
                 }
+                #endregion
             }
             #endregion
         }
@@ -228,6 +237,7 @@ public partial class Default2 : System.Web.UI.Page
 
     private string SqlQueryBuilder(string searchText)
     {
+        ArrayList CheckedItems = CheckItems();
         //Searchstring empty
         #region SearchString
         if (searchText.Length > 0)
@@ -347,24 +357,28 @@ public partial class Default2 : System.Web.UI.Page
 
     protected void TestBtn_Click(object sender, EventArgs e)
     {
-    #region CheckedItems
+        ArrayList CheckedItems = CheckItems();
+
+        //test writeout (only used for testing purposes)
+        foreach (var AlItem in CheckedItems)
+        {
+            Response.Write(AlItem.ToString() + ";");
+        }
+    }
+
+    private ArrayList CheckItems()
+    {
         //Creates an empty ArrayList to populate with checked items (See for loop)
-        ArrayList CheckedItems = new ArrayList();
+        ArrayList TempItems = new ArrayList();
 
         //Populates the CheckedItems ArrayList with the value of each checked <ListItem> from SearchCbl (<CheckboxList>)
         for (int i = 0; i < SearchCbl.Items.Count; i++)
         {
             if (SearchCbl.Items[i].Selected)
             {
-                CheckedItems.Add(SearchCbl.Items[i].Value);
+                TempItems.Add(SearchCbl.Items[i].Value);
             }
         }
-
-        //test writeout (only used for testing purposes)
-        foreach (var ALItem in CheckedItems)
-        {
-            Response.Write(ALItem.ToString() + ";");
-        }
-
+        return TempItems;
     }
 }
